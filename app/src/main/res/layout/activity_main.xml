@@ -28,6 +28,7 @@
         android:layout_above="@+id/submitButton"
         android:layout_marginBottom="50dp"
         />
+
     <Button
         android:id="@+id/submitButton"
         android:layout_width="wrap_content"
@@ -35,7 +36,18 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
-        android:padding="10dp"
         android:onClick="changeName"
-        android:text="Submit"/>
+        android:padding="10dp"
+        android:text="Submit" />
+    <Button
+        android:id="@+id/newActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:layout_marginEnd="10dp"
+        android:onClick="nextPage"
+        android:text="Next Page"/>
 </RelativeLayout>
