@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.labs.models.List
 import java.time.LocalDate
-import android.widget.ListAdapter as ListAdapter
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,8 +19,9 @@ class MainActivity : AppCompatActivity() {
 
         listAdapter = ListAdapter(ArrayList())
         //Desafios
-        rvTodoItems.adapter = listAdapter
-        rvTodoItems.layoutManager = LinearLayoutManager(this)
+        val rvItems = findViewById<RecyclerView>(R.id.rvItems)
+        rvItems.adapter = listAdapter
+        rvItems.layoutManager = LinearLayoutManager(this)
 
         findViewById<Button>(R.id.btnAdd).setOnClickListener {
             val editTextNome = findViewById<EditText>(R.id.editTextNome).toString()
@@ -36,6 +37,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun goToList(view: View) {}
+    fun goToList(view: View) {
+
+    }
 }
 
