@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Coloque o seu nome..."
+        android:inputType="text"
         android:layout_below="@+id/titulo"
         android:layout_marginTop="60dp"/>
 
@@ -29,11 +30,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Coloque a sua idade..."
+        android:inputType="number"
         android:layout_below="@id/editTextNome"
         android:layout_marginTop="60dp"/>
 
    <RadioGroup
-       android:id="@+id/radioGroupSexo"
+       android:id="@+id/radioGroupGenero"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_below="@+id/editTextIdade"
@@ -44,17 +46,17 @@
            android:text="Genero:"
            android:textSize="18sp"/>
        <RadioButton
-           android:id="@+id/radioSexoMasculino"
+           android:id="@+id/radioMasculino"
            android:layout_width="wrap_content"
            android:layout_height="match_parent"
            android:text="Masculino"/>
        <RadioButton
-           android:id="@+id/radioSexoFeminino"
+           android:id="@+id/radioFeminino"
            android:layout_width="wrap_content"
            android:layout_height="match_parent"
            android:text="Feminino"/>
        <RadioButton
-           android:id="@+id/radioSexoIndef"
+           android:id="@+id/radioIndef"
            android:layout_width="wrap_content"
            android:layout_height="match_parent"
            android:text="Indefenido"/>
