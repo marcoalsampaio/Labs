@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/file"
+        android:title="File"
+        app:showAsAction="always">
+
+        <menu>
+            <item android:id="@+id/create_new"
+                android:title="Create New"/>
+            <item android:id="@+id/open"
+                android:title="Open"/>
+        </menu>
+
+    </item>
+
+    <item android:id="@+id/op1"
+        android:title="OP1"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/op2"
+        android:title="OP2"
+        app:showAsAction="never"/>
+    <item android:id="@+id/op3"
+        android:title="OP3"
+        app:showAsAction="ifRoom"/>
+</menu>
