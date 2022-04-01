@@ -1,18 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+<TextView
+    android:id="@+id/titulo"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:textStyle="bold"
+    android:text="Titulo"
+    android:gravity="center"
+    android:textSize="24sp"
+    android:padding="10dp"
+    android:background="#ccc"/>
+
+    <EditText
+        android:id="@+id/editTextNome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Coloque o seu nome..."
+        android:layout_below="@+id/titulo"
+        android:layout_marginTop="60dp"/>
+
+    <EditText
+        android:id="@+id/editTextIdade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Coloque a sua idade..."
+        android:layout_below="@id/editTextNome"
+        android:layout_marginTop="60dp"/>
+
+   <RadioGroup
+       android:id="@+id/radioGroupSexo"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@+id/editTextIdade"
+       android:layout_marginTop="60dp">
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Genero:"
+           android:textSize="18sp"/>
+       <RadioButton
+           android:id="@+id/radioSexoMasculino"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:text="Masculino"/>
+       <RadioButton
+           android:id="@+id/radioSexoFeminino"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:text="Feminino"/>
+       <RadioButton
+           android:id="@+id/radioSexoIndef"
+           android:layout_width="wrap_content"
+           android:layout_height="match_parent"
+           android:text="Indefenido"/>
+   </RadioGroup>
+
+    <Button
+        android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="Adicionar"
+        android:layout_above="@id/btnLista"
+        android:layout_centerHorizontal="true"
+        android:onClick="addToList"/>
+    <Button
+        android:id="@+id/btnLista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lista"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="goToList"/>
+</RelativeLayout>

@@ -2,6 +2,7 @@ package com.example.labs
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -9,4 +10,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         //Desafios
     }
+
+    fun addToList(view: View) {}
+    fun goToList(view: View) {}
 }
