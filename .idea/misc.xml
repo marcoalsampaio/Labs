@@ -3,10 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/ComputacaoMovel/Labs/app/src/main/res/layout/activity_list_view.xml" value="0.2234375" />
-        <entry key="..\:/ComputacaoMovel/Labs/app/src/main/res/layout/activity_main.xml" value="0.20833333333333334" />
-        <entry key="..\:/ComputacaoMovel/Labs/app/src/main/res/layout/activity_main2.xml" value="0.18802083333333333" />
-        <entry key="..\:/ComputacaoMovel/Labs/app/src/main/res/layout/todo_line.xml" value="0.25416666666666665" />
+        <entry key="..\:/ComputacaoMovel/Labs/app/src/main/res/layout/activity_list_view.xml" value="0.2259963768115942" />
+        <entry key="..\:/ComputacaoMovel/Labs/app/src/main/res/menu/menu.xml" value="0.32760416666666664" />
       </map>
     </option>
   </component>

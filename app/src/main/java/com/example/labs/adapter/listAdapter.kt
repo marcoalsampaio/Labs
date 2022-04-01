@@ -21,6 +21,21 @@ class listAdapter (private val list: ArrayList<list>): RecyclerView.Adapter<List
         )
     }
 
+    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+        val currentItem = list[position]
+        holder.genero.text = currentItem.genero
+        holder.nome.text = currentItem.name
+        holder.idade.text = currentItem.genero.toString()
+    }
+
+    override fun getItemCount(): Int {
+        return list.size
+    }
+
+    fun addItem(item: list){
+        list.add(item)
+        notifyDataSetChanged()
+    }
 }
 
 class ListViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
@@ -29,22 +44,4 @@ class ListViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
     val genero = itemView.findViewById<EditText>(R.id.textViewGenero);
 }
 
-
-    override fun onBindViewHolder(holder: TodoViewHolder, position: Int) { //Aceder a cada item, e colocar conteudo nas views criadas
-        //Aceder ao item atual
-        val currentTodo = todos[position]
-        holder.title.text = currentTodo.title
-        holder.date.text = currentTodo.date.toString()
-        holder.number.text = "#"+(position+1).toString()
-    }
-
-    override fun getItemCount(): Int {
-        return todos.size
-    }
-
-    fun addTodo(todo: Todo){
-        todos.add(todo)
-        notifyDataSetChanged()
-    }
-}
 
