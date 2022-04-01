@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.labs.R
 import com.example.labs.models.List
 
-class listAdapter (private val list: ArrayList<List>): RecyclerView.Adapter<ListViewHolder>(){
+class ListAdapter (private val list: ArrayList<List>): RecyclerView.Adapter<ListViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         return ListViewHolder(
             LayoutInflater
