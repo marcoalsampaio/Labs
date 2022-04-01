@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.labs.R
 import com.example.labs.models.list
@@ -14,7 +15,7 @@ class listAdapter (private val list: ArrayList<list>): RecyclerView.Adapter<List
             LayoutInflater
                 .from(parent.context)
                 .inflate(
-                    R.layout.list_line,
+                    R.layout.activity_list_view,
                     parent,
                     false
                 )
@@ -39,9 +40,9 @@ class listAdapter (private val list: ArrayList<list>): RecyclerView.Adapter<List
 }
 
 class ListViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-    val nome = itemView.findViewById<EditText>(R.id.textViewNome);
-    val idade = itemView.findViewById<EditText>(R.id.textViewIdade);
-    val genero = itemView.findViewById<EditText>(R.id.textViewGenero);
+    val nome = itemView.findViewById<TextView>(R.id.textViewNome);
+    val idade = itemView.findViewById<TextView>(R.id.textViewIdade);
+    val genero = itemView.findViewById<TextView>(R.id.textViewGenero);
 }
 
 
