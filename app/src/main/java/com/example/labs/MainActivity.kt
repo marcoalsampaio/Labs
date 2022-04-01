@@ -3,24 +3,39 @@ package com.example.labs
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.Toast
+import android.widget.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.labs.models.List
+import java.time.LocalDate
+import android.widget.ListAdapter as ListAdapter
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var listAdapter: ListAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        listAdapter = ListAdapter(ArrayList())
         //Desafios
+        rvTodoItems.adapter = listAdapter
+        rvTodoItems.layoutManager = LinearLayoutManager(this)
+
+        findViewById<Button>(R.id.btnAdd).setOnClickListener {
+            val editTextNome = findViewById<EditText>(R.id.editTextNome).toString()
+            val editTextIdade = findViewById<EditText>(R.id.editTextIdade).toString()
+            val genero = findViewById<RadioGroup>(R.id.radioGroupGenero)
+            val radioButton = findViewById<RadioButton>(genero.checkedRadioButtonId).toString()
+
+            if(editTextIdade.isNotEmpty() && editTextNome.isNotEmpty() && radioButton.isNotEmpty()){
+                val item = List(editTextNome, editTextIdade, radioButton)
+            }
+        }
+
     }
 
-    fun addToList(view: View) {
-        val editTextNome = findViewById<EditText>(R.id.editTextNome)
-        val editTextIdade = findViewById<EditText>(R.id.editTextIdade)
-        val genero = findViewById<RadioGroup>(R.id.radioGroupGenero)
-        val radioButton = findViewById<RadioButton>(genero.checkedRadioButtonId)
-       // Toast.makeText(this, radioButton.text, Toast.LENGTH_LONG ).show()
-    }
+
     fun goToList(view: View) {}
 }
+

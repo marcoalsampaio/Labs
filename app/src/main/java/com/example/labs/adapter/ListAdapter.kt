@@ -3,13 +3,12 @@ package com.example.labs.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.labs.R
-import com.example.labs.models.list
+import com.example.labs.models.List
 
-class listAdapter (private val list: ArrayList<list>): RecyclerView.Adapter<ListViewHolder>(){
+class listAdapter (private val list: ArrayList<List>): RecyclerView.Adapter<ListViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         return ListViewHolder(
             LayoutInflater
@@ -26,14 +25,14 @@ class listAdapter (private val list: ArrayList<list>): RecyclerView.Adapter<List
         val currentItem = list[position]
         holder.genero.text = currentItem.genero
         holder.nome.text = currentItem.name
-        holder.idade.text = currentItem.genero.toString()
+        holder.idade.text = currentItem.genero
     }
 
     override fun getItemCount(): Int {
         return list.size
     }
 
-    fun addItem(item: list){
+    fun addItem(item: List){
         list.add(item)
         notifyDataSetChanged()
     }
