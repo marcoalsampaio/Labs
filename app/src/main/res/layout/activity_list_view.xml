@@ -8,33 +8,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvItems"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewNome"
-                android:text="Nome"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewIdade"
-                android:layout_below="@+id/textViewNome"
-                android:text="Idade"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textViewGenero"
-                android:layout_below="@+id/textViewIdade"
-                android:text="Genero"/>
-
-        </RelativeLayout>
-
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="wrap_content"/>
 
     <Button
         android:layout_width="wrap_content"

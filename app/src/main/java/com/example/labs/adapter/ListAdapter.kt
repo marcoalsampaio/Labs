@@ -14,7 +14,7 @@ class ListAdapter (private val list: ArrayList<List>): RecyclerView.Adapter<List
             LayoutInflater
                 .from(parent.context)
                 .inflate(
-                    R.layout.activity_list_view,
+                    R.layout.list_line,
                     parent,
                     false
                 )
@@ -25,7 +25,7 @@ class ListAdapter (private val list: ArrayList<List>): RecyclerView.Adapter<List
         val currentItem = list[position]
         holder.genero.text = currentItem.genero
         holder.nome.text = currentItem.name
-        holder.idade.text = currentItem.genero
+        holder.idade.text = currentItem.idade
     }
 
     override fun getItemCount(): Int {

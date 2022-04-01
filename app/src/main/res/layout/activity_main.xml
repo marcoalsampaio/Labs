@@ -62,6 +62,8 @@
            android:text="Indefenido"/>
    </RadioGroup>
 
+
+
     <Button
         android:id="@+id/btnAdd"
         android:layout_width="wrap_content"
