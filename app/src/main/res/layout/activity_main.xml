@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <!--<TextView
         android:id="@+id/NomeView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,5 +37,34 @@
         android:layout_marginBottom="10dp"
         android:padding="10dp"
         android:onClick="changeName"
-        android:text="Submit"/>
+        android:text="Submit"/> -->
+    <EditText
+        android:id="@+id/edt1"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"/>
+    <EditText
+        android:id="@+id/edt2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edt1"
+        android:inputType="number"/>
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edt2"/>
+    <CheckBox
+        android:id="@+id/cb"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv"
+        android:text="Iva"/>
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cb"
+        android:onClick="total"
+        android:text="Calcular"/>
 </RelativeLayout>
