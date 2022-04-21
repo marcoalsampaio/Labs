@@ -36,7 +36,7 @@ class TodoAdapter (
         }
       //  holder.cidade.text = currentTodo.capital
         holder.habitantes.text = currentTodo.habitantes.toString()
-        holder.fregDis.text = (currentTodo.n_distritos * currentTodo.n_freguesias).toString()
+        holder.fregDis.text = (currentTodo.n_distritos.toInt() * currentTodo.n_freguesias.toInt()).toString()
     }
 
     override fun getItemCount(): Int {
