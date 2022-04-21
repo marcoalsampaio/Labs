@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="100dp"
     android:paddingStart="8dp"
     android:paddingEnd="8dp">
 
     <!--titulo, data, numero-->
     <TextView
         android:id="@+id/todoTitle"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Comprar Massa"
+        android:text="Pais Info"
+        android:textSize="24sp" />
+    <TextView
+        android:id="@+id/todoHabitantes"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Habitantes"
+        android:textSize="24sp" />
+    <TextView
+        android:id="@+id/todoCidade"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/todoTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cidade"
         android:textSize="24sp" />
 
     <TextView
+        android:id="@+id/todoNFreg"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Freg+Dist"
+        android:textSize="24sp" />
+
+    <!-- <TextView
         android:id="@+id/todoDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,6 +56,6 @@
         android:text="#1"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true" /> -->
 
 </RelativeLayout>
