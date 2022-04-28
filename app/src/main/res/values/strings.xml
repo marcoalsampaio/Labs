@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Labs</string>
+    <string name="add_name" translatable="false">Add</string>
 </resources>
