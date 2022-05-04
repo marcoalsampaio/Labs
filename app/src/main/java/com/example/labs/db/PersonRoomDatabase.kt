@@ -4,8 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.labs.dao.PersonDao
 import com.example.labs.model.Person
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import java.security.AccessControlContext
 
 //Tabelas               //Version - Migrações      //
@@ -16,6 +19,29 @@ abstract class PersonRoomDatabase : RoomDatabase() { //vai reprsentar a base de 
 
     abstract fun personDao(): PersonDao //Interagir como fossem getters em java
 
+    private class PersonDatabaseCallback(
+        private val scope: CoroutineScope
+    ) : RoomDatabase.Callback() {
+
+        override fun onCreate(db: SupportSQLiteDatabase) {
+            super.onCreate(db)
+            INSTANCE?.let { database ->
+                scope.launch {
+                    populateDatabase(database.personDao())
+                }
+            }
+        }
+
+        suspend fun populateDatabase(PersonDao: PersonDao) {
+            // Delete all content here.
+
+            // Add sample words.
+            var Person = Person("Hello")
+            PersonDao.insert(Person)
+
+            // TODO: Add your own words!
+        }
+    }
     //Singleton - Instaciar 1 x e dps ir sempre buscala
     companion object{ //Todos os metodos e var defenidos, ser acedidos sem instanciar
 
@@ -24,14 +50,15 @@ abstract class PersonRoomDatabase : RoomDatabase() { //vai reprsentar a base de 
 
         //Criar função para ir buscar a BD e caso nao exista cirar a bd
 
-        fun getDatabase(context: Context): PersonRoomDatabase{
+        fun getDatabase(context: Context, applicationScope: CoroutineScope): PersonRoomDatabase{
             return  INSTANCE ?: synchronized(this){
                 //Criar a base de dados
                 val instance = Room.databaseBuilder(
                     context.applicationContext, //Contexto de toda a aplicação
                     PersonRoomDatabase:: class.java, //class da base de dados
                     "person_database" //Nome da base de dados
-                ).build()
+                ).fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 instance //Nao e preciso return, deixar so o instance
             }
