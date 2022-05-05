@@ -36,8 +36,8 @@ abstract class PersonRoomDatabase : RoomDatabase() { //vai reprsentar a base de 
             // Delete all content here.
 
             // Add sample words.
-            var Person = Person("Hello")
-            PersonDao.insert(Person)
+            var person = Person("Hello")
+            PersonDao.insert(person)
 
             // TODO: Add your own words!
         }
@@ -50,14 +50,14 @@ abstract class PersonRoomDatabase : RoomDatabase() { //vai reprsentar a base de 
 
         //Criar função para ir buscar a BD e caso nao exista cirar a bd
 
-        fun getDatabase(context: Context, applicationScope: CoroutineScope): PersonRoomDatabase{
+        fun getDatabase(context: Context, scope: CoroutineScope): PersonRoomDatabase{
             return  INSTANCE ?: synchronized(this){
                 //Criar a base de dados
                 val instance = Room.databaseBuilder(
                     context.applicationContext, //Contexto de toda a aplicação
                     PersonRoomDatabase:: class.java, //class da base de dados
                     "person_database" //Nome da base de dados
-                ).fallbackToDestructiveMigration()
+                ).addCallback(PersonDatabaseCallback(scope))
                     .build()
                 INSTANCE = instance
                 instance //Nao e preciso return, deixar so o instance
