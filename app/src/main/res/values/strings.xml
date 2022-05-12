@@ -3,6 +3,8 @@
     <string name="add_name" translatable="false">Add</string>
     <string name="hint_word">Word...</string>
     <string name="button_save">Save</string>
-    <string name="empty_not_saved">Word not saved because it is empty.</string>
-    <string name="add_word">Add word</string>
+    <string name="empty_not_saved">Person not saved because it is empty.</string>
+    <string name="add_word">Add Person</string>
+    <string name="hint_idade">Idade ...</string>
+    <string name="hint_email">Email...</string>
 </resources>

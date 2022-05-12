@@ -9,10 +9,10 @@ import com.example.labs.dao.PersonDao
 import com.example.labs.model.Person
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import java.security.AccessControlContext
 
 //Tabelas               //Version - Migrações      //
-@Database(entities = [Person::class], version = 1, exportSchema = false)
+
+@Database(entities = [Person::class], version = 6, exportSchema = false)
 abstract class PersonRoomDatabase : RoomDatabase() { //vai reprsentar a base de dados e vai se criar a base de dados em si
                                     //Para utilizar metodos de uma base de dados room
     //Instanciar a base de daods 1 x "Singleton" uma unica instacia na base de dados inteira (Design Patern)
@@ -22,6 +22,15 @@ abstract class PersonRoomDatabase : RoomDatabase() { //vai reprsentar a base de 
     private class PersonDatabaseCallback(
         private val scope: CoroutineScope
     ) : RoomDatabase.Callback() {
+
+        override fun onOpen(db: SupportSQLiteDatabase) {
+            super.onOpen(db)
+            INSTANCE?.let { database ->
+                scope.launch {
+                    populateDatabase(database.personDao())
+                }
+            }
+        }
 
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
@@ -36,7 +45,7 @@ abstract class PersonRoomDatabase : RoomDatabase() { //vai reprsentar a base de 
             // Delete all content here.
 
             // Add sample words.
-            var person = Person("Hello")
+            var person = Person("Hello","1","hello@gmail.com")
             PersonDao.insert(person)
 
             // TODO: Add your own words!
@@ -58,6 +67,7 @@ abstract class PersonRoomDatabase : RoomDatabase() { //vai reprsentar a base de 
                     PersonRoomDatabase:: class.java, //class da base de dados
                     "person_database" //Nome da base de dados
                 ).addCallback(PersonDatabaseCallback(scope))
+                    .fallbackToDestructiveMigration()
                     .build()
                 INSTANCE = instance
                 instance //Nao e preciso return, deixar so o instance

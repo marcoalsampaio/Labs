@@ -53,10 +53,13 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, intentData)
 
         if (requestCode == newPersonActivityRequestCode && resultCode == Activity.RESULT_OK) {
-            intentData?.getStringExtra(NewPersonActivity.EXTRA_REPLY)?.let { reply ->
-                val person = Person(reply)
-                personViewModel.insert(person)
-            }
+            val name = intentData?.getStringExtra(NewPersonActivity.EXTRA_NAME)
+            val idade = intentData?.getStringExtra(NewPersonActivity.EXTRA_IDADE)
+            val email = intentData?.getStringExtra(NewPersonActivity.EXTRA_EMAIL)
+
+
+            val person = Person(name!!, idade!!, email!!)
+            personViewModel.insert(person)
         } else {
             Toast.makeText(
                 applicationContext,
