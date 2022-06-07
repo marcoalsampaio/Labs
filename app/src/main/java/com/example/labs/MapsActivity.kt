@@ -2,6 +2,10 @@ package com.example.labs
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import com.example.labs.api.EndPoints
+import com.example.labs.api.ServiceBuilder
+import com.example.labs.api.User
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -10,6 +14,9 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.example.labs.databinding.ActivityMapsBinding
+import okhttp3.Response
+import retrofit2.Call
+import retrofit2.Callback
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -41,8 +48,30 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
+       /* val sydney = LatLng(-34.0, 151.0)
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))*/
+        addMarkers(mMap);
     }
+
+    fun addMarkers(map: GoogleMap){
+        mMap = map
+        var users: List<User>
+        val request = ServiceBuilder.buildService(EndPoints::class.java)
+        val call = request.getUsers()
+        var position: LatLng
+        call.enqueue(object : Callback<List<User>> {
+            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
+                if (response.isSuccessful){
+                    users = response.body()!!
+                    for (user in users) {
+                        position = LatLng(user.address.geo.lat.toString().toDouble(),user.address.geo.lng.toString().toDouble())
+                        mMap.addMarker(MarkerOptions().position(position).title(user.address.suite + " - " + user.address.city)) } } }
+
+            override fun onFailure(call: Call<List<User>>, t: Throwable) {
+                Toast.makeText(this@MapsActivity, "${t.message}", Toast.LENGTH_SHORT).show()
+            }
+        })
+}
 }
