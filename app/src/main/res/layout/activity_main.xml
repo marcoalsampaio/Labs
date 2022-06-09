@@ -16,7 +16,7 @@
         android:padding="10dp"
         android:textColor="#333"
         android:textStyle="bold"
-        android:text="Login"
+        android:text="Inexistente"
         />
     <EditText
         android:id="@+id/editTextUsername"
@@ -34,7 +34,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="60dp"
         android:background="#666a86"
-        android:onClick="login"
-        android:text="Login"/>
+        android:onClick="save"
+        android:text="Button"/>
 
 </RelativeLayout>

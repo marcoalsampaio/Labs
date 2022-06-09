@@ -30,11 +30,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showWelcome(usernameValue: String) {
-        findViewById<TextView>(R.id.textViewUsername).text = "Hello, $usernameValue" //Mudar valor para Ola username, Problemas de segurnaças, user input
+        findViewById<TextView>(R.id.textViewUsername).text = usernameValue //Mudar valor para Ola username, Problemas de segurnaças, user input
         findViewById<EditText>(R.id.editTextUsername).isEnabled = false //Colocar disable
 
         val submitButton = findViewById<Button>(R.id.buttonSubmitUsername) //Change Text and click
-        submitButton.text = "Logout"
+        submitButton.text = "button"
         submitButton.setOnClickListener {
             logout(it) //Interavel IT
         }
@@ -50,17 +50,17 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showLogin() {
-        findViewById<TextView>(R.id.textViewUsername).text = "Login" //Mudar valor para Ola username, Problemas de segurnaças, user input
+        findViewById<TextView>(R.id.textViewUsername).text = "Inexistente" //Mudar valor para Ola username, Problemas de segurnaças, user input
         findViewById<EditText>(R.id.editTextUsername).isEnabled = true //Colocar disable
 
         val submitButton = findViewById<Button>(R.id.buttonSubmitUsername) //Change Text and click
-        submitButton.text = "Login"
+        submitButton.text = "Button"
         submitButton.setOnClickListener {
-            login(it) //Interavel IT - View onde se encontra o butão
+            save(it) //Interavel IT - View onde se encontra o butão
         }
     }
 
-    fun login(view: View) {
+    fun save(view: View) {
         val editTextUsername = findViewById<EditText>(R.id.editTextUsername)
         if(editTextUsername.text.isNotEmpty()){
             val sharedPreference: SharedPreferences = getSharedPreferences("FILE_1", Context.MODE_PRIVATE) //Acesso ao ficheiro
