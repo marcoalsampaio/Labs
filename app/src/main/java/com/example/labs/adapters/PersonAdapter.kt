@@ -18,15 +18,22 @@ class PersonAdapter : ListAdapter<Person, PersonAdapter.PersonViewHolder>(Person
 
     override fun onBindViewHolder(holder: PersonViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.name, current.idade, current.email)
+        holder.bind(current.name, current.idade.toInt(), current.email, current.ano.toInt())
     }
 
     class PersonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val personNameView: TextView = itemView.findViewById(R.id.textView)
         private val personEmailView: TextView = itemView.findViewById(R.id.textViewEmail)
 
-        fun bind(name: String?, idade: String, email: String?) {
-            personNameView.text = "$name-$idade"
+        fun bind(name: String?, idade: Int, email: String?, ano: Int) {
+
+            var anos = if(2022-idade>ano){
+                "Ainda vai fazer anos"
+            }else{
+                "Ja fez anos"
+            }
+
+            personNameView.text = "$name-$idade - $anos"
             personEmailView.text = email
         }
 

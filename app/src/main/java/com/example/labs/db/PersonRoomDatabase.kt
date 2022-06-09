@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 //Tabelas               //Version - Migrações      //
 
-@Database(entities = [Person::class], version = 6, exportSchema = false)
+@Database(entities = [Person::class], version = 12, exportSchema = false)
 abstract class PersonRoomDatabase : RoomDatabase() { //vai reprsentar a base de dados e vai se criar a base de dados em si
                                     //Para utilizar metodos de uma base de dados room
     //Instanciar a base de daods 1 x "Singleton" uma unica instacia na base de dados inteira (Design Patern)
@@ -45,7 +45,7 @@ abstract class PersonRoomDatabase : RoomDatabase() { //vai reprsentar a base de 
             // Delete all content here.
 
             // Add sample words.
-            var person = Person("Hello","1","hello@gmail.com")
+            var person = Person("Hello","1","hello@gmail.com", "2000")
             PersonDao.insert(person)
 
             // TODO: Add your own words!

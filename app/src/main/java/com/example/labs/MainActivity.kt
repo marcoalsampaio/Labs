@@ -4,13 +4,16 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.labs.adapters.PersonAdapter
+import com.example.labs.dao.PersonDao
 import com.example.labs.model.Person
+import com.example.labs.repository.PersonRepository
 import com.example.labs.viewModel.PersonViewModel
 import com.example.labs.viewModel.PersonViewModelFactory
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -18,6 +21,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var personRepo: PersonRepository
     private val newPersonActivityRequestCode = 1
     private val personViewModel: PersonViewModel by viewModels {
         PersonViewModelFactory((application as PersonApplication).repository)
@@ -56,9 +60,10 @@ class MainActivity : AppCompatActivity() {
             val name = intentData?.getStringExtra(NewPersonActivity.EXTRA_NAME)
             val idade = intentData?.getStringExtra(NewPersonActivity.EXTRA_IDADE)
             val email = intentData?.getStringExtra(NewPersonActivity.EXTRA_EMAIL)
+            val ano = intentData?.getStringExtra(NewPersonActivity.EXTRA_ANO)
 
 
-            val person = Person(name!!, idade!!, email!!)
+            val person = Person(name!!, idade!!, email!!, ano!!)
             personViewModel.insert(person)
         } else {
             Toast.makeText(
@@ -68,7 +73,6 @@ class MainActivity : AppCompatActivity() {
             ).show()
         }
     }
-
 }
 
 

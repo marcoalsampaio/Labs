@@ -17,6 +17,9 @@ interface PersonDao { //Criar querys sql e associar aos metodos
     suspend fun insert(person: Person) //suspend -> Corre a parte do restante codigo, para casoa conteça algo de mal nao se aperceber
     //suspend sempre que se faz modificções a base de dados
 
-    @Query("DELETE FROM person_table")
-    suspend fun deleteAll()
+    @Query("DELETE FROM person_table where idade > 20")
+    suspend fun delete20()
+
+   /* @Query("SELECT * FROM person_table WHERE name like B%")
+    suspend fun getByB(): Flow<List<Person>>*/
 }
